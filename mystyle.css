@@ -18,10 +18,20 @@ h1 {
     font-variant: small-caps;
 }
 
-p {
-    padding-left: 20px;
+h2 {
+    background-color: cornflowerblue;
+    color: whitesmoke;
+    padding:5px;
 }
 
-.logo{
+li{
+    margin: 10px 0;
+}
+
+div.container {
+    padding: 20px;
+}
+
+.logo {
     text-decoration: none;
 }

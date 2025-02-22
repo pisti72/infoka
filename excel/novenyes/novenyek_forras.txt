@@ -1,0 +1,7 @@
+Növény neve	Kezdeti magasság (cm)	Hónap végén mért magasság (cm)	Növekedés (cm)	Növekedési ráta (%)		
+Borsó	10	35				Növekedés összege:
+Bab	12	40				Átlagos növekedés:
+Kukorica	15	60				Legnagyobb növekedési ráta:
+Napraforgó	20	85				Legkisebb növekedés ráta:
+Búza	18	50				Legnagyobb növekedésű növény:
+						Legkisebb növekedésű növény:
