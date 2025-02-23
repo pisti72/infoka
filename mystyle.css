@@ -46,3 +46,19 @@ td,th{
 img.icon{
     height: 32px;
 }
+
+#doorkeeper{
+    top:300px;
+    left:50%;
+    margin-left:-115px;
+    position:absolute;
+    display: none;
+    padding:20px;
+    width:190px;
+    height:150px;
+    background-image: url(assets/warning.png);
+    filter: drop-shadow(5px 5px 15px);
+}
+#pin{
+    font-size: 50px;
+}

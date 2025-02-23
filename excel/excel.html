@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>excel</title>
     <link rel="stylesheet" href="../mystyle.css">
+    <script src="../assets/script.js"></script>
 </head>
 
 <body>
@@ -30,27 +31,23 @@
                         Növényes
                     </td>
                     <td>
-                        <a href="./novenyes/novenyes_feladat.pdf"><img src="../assets/pdf.png" class="icon">novenyes_feladat.pdf</a>
+                        <a onclick="unlock(this)" id="1" ><img src="../assets/pdf.png" class="icon">novenyes_feladat.pdf</a>
                     </td>
                     <td>
-                        <a href="./novenyes/novenyek_forras.txt"><img src="../assets/txt-file.png" class="icon">novenyek_forras.txt</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Másik
-                    </td>
-                    <td>
-                        <a ><img src="../assets/pdf.png" class="icon">semmi.pdf</a>
-                    </td>
-                    <td>
-                        <a ><img src="../assets/txt-file.png" class="icon">semmi_forras.txt</a>
+                        <a onclick="unlock(this)" id="2"><img src="../assets/txt-file.png" class="icon">novenyek_forras.txt</a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
+    <div id="doorkeeper">
+        <p>Add meg a 4 jegyű kódot:</p>
+        <form>
+            <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()">
+        </form>
+        
+    </div>
+    
 </body>
 
 </html>
