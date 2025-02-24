@@ -3,6 +3,10 @@ map1.set("1", ["1986", "./novenyes/novenyes_feladat.pdf"])
 map1.set("2", ["1986", "./novenyes/novenyek_forras.txt"])
 map1.set("3", ["2112", "./arak/arak_feladat.pdf"])
 map1.set("4", ["2112", "./arak/arak_nyers.xlsx"])
+map1.set("5", ["7895", "./ittas/ittasvezetes_feladat.pdf"])
+map1.set("6", ["7895", "./ittas/ittasvezetes_nyers.xlsx"])
+map1.set("7", ["5456", "./lotto5/lotto5_feladat.pdf"])
+map1.set("8", ["5456", "./lotto5/lotto5_nyers.xlsx"])
 var current_obj = null
 
 function unlock(obj) {
@@ -11,12 +15,13 @@ function unlock(obj) {
     current_obj = obj
     if (current_obj.href.length > 0) {
         doorkeeper.style.display = "none"
+    }else{
+        pin = document.getElementById("pin")
+        pin.focus();
     }
 }
 
 function reveal() {
-    pin = document.getElementById("pin")
-    console.log(pin.value)
     if (pin.value.length == 4) {
         item = map1.get(current_obj.id)
 
