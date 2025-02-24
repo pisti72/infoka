@@ -16,13 +16,42 @@
     <div class="container">
         <h2>Táblázatkezelés</h2>
         <p>Ezen az oldalon táblázatkezeléssel kapcsolatos oktatási anyagokat találsz.</p>
+        <h3>Tananyagok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Micsoda</th>
+                    <th>Link vagy fájl</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Tankönyvben
+                    </td>
+                    <td>
+                        <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_08_001" target="_blank"><img src="../assets/www.png"
+                                class="icon">nkp Táblázatkezelés</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Táblázatkezelés
+                    </td>
+                    <td>
+                        <a href="Táblázatkezelés.pptx"><img src="../assets/ppt.png"
+                                class="icon">Táblázatkezelés.pptx</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <h3>Feladatok</h3>
         <table>
             <thead>
                 <tr>
                     <th>Feladat</th>
-                    <th>Leírás</th>
-                    <th>Forrás fájl</th>
+                    <th>Leírás 🔒</th>
+                    <th>Forrás fájl 🔒</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,10 +60,12 @@
                         Növényes
                     </td>
                     <td>
-                        <a onclick="unlock(this)" id="1" ><img src="../assets/pdf.png" class="icon">novenyes_feladat.pdf</a>
+                        <a onclick="unlock(this)" id="1"><img src="../assets/pdf.png"
+                                class="icon">novenyes_feladat.pdf</a>
                     </td>
                     <td>
-                        <a onclick="unlock(this)" id="2"><img src="../assets/txt-file.png" class="icon">novenyek_forras.txt</a>
+                        <a onclick="unlock(this)" id="2"><img src="../assets/txt-file.png"
+                                class="icon">novenyek_forras.txt</a>
                     </td>
                 </tr>
                 <tr>
@@ -42,10 +73,32 @@
                         Árváltozás
                     </td>
                     <td>
-                        <a onclick="unlock(this)" id="3" ><img src="../assets/pdf.png" class="icon">arak_feladat.pdf</a>
+                        <a onclick="unlock(this)" id="3"><img src="../assets/pdf.png" class="icon">arak_feladat.pdf</a>
                     </td>
                     <td>
                         <a onclick="unlock(this)" id="4"><img src="../assets/xls.png" class="icon">arak_nyers.xlsx</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ittas vezetés
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="5"><img src="../assets/pdf.png" class="icon">ittasvezetes_feladat.pdf</a>
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="6"><img src="../assets/xls.png" class="icon">ittasvezetes_nyers.xlsx</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Lottóhúzás
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="7"><img src="../assets/pdf.png" class="icon">lotto5_feladat.pdf</a>
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="8"><img src="../assets/xls.png" class="icon">lotto5_nyers.xlsx</a>
                     </td>
                 </tr>
             </tbody>
@@ -56,9 +109,9 @@
         <form>
             <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()">
         </form>
-        
+
     </div>
-    
+
 </body>
 
 </html>
