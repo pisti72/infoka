@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafika</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="assets/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html" class="logo">Infoka</a></h1>
+    </header>
+    <div class="container">
+        <h2>Grafika</h2>
+        <p>Ezen az oldalon számítógépes grafikával kapcsolatos oktatási anyagokat találsz.</p>
+        <h3>Tananyagok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Micsoda</th>
+                    <th>Link vagy fájl</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Tankönyvben
+                    </td>
+                    <td>
+                        <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_02_001"
+                            target="_blank"><img src="assets/www.png" class="icon">nkp Számítógépes grafika</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="assets/gimp-logo.svg" class="icon">
+                        GIMP
+                    </td>
+                    <td>
+                        <a href="https://www.gimp.org/" target="_blank"><img src="assets/www.png"
+                                class="icon">www.gimp.org</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="assets/inkscape-logo.svg" class="icon">
+                        Inkscape
+                    </td>
+                    <td>
+                        <a href="https://inkscape.org/" target="_blank"><img src="assets/www.png"
+                                class="icon">www.inkscape.org</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Feladatok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feladat</th>
+                    <th>Leírás 🔒</th>
+                    <th>Forrás fájl 🔒</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Egyszerű feladatok</td>
+                    <td>
+                        <a onclick="unlock(this)" id="31"><img src="assets/pdf.png" class="icon">nope.pdf</a>
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="32"><img src="assets/py.png" class="icon">nope.py</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="doorkeeper">
+        <p>Add meg a 4 jegyű kódot:</p>
+        <form>
+            <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()">
+        </form>
+    </div>
+
+</body>
+
+</html>
