@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programozás</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="assets/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html" class="logo">Infoka</a></h1>
+    </header>
+    <div class="container">
+        <h2>Programozás</h2>
+        <p>Ezen az oldalon programozással kapcsolatos oktatási anyagokat találsz.</p>
+        <h3>Tananyagok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Micsoda</th>
+                    <th>Link vagy fájl</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Tankönyvben
+                    </td>
+                    <td>
+                        <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_05_001"
+                            target="_blank"><img src="assets/www.png" class="icon">nkp Programozás</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Python W3School
+                    </td>
+                    <td>
+                        <a href="https://www.w3schools.com/python/"
+                            target="_blank"><img src="assets/www.png" class="icon">www.w3schools.com/python/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pico 8 Education
+                    </td>
+                    <td>
+                        <a href="https://www.pico-8-edu.com/"
+                            target="_blank"><img src="assets/www.png" class="icon">www.pico-8-edu.com</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Microbit
+                    </td>
+                    <td>
+                        <a href="prog/microbit_feladatok_középsuli.pptx"><img src="assets/ppt.png" class="icon">microbit_feladatok_középsuli.pptx</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Feladatok</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feladat</th>
+                    <th>Leírás 🔒</th>
+                    <th>Forrás fájl 🔒</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Egyszerű feladatok</td>
+                    <td>
+                        <a onclick="unlock(this)" id="1"><img src="assets/pdf.png" class="icon">nope.pdf</a>
+                    </td>
+                    <td>
+                        <a onclick="unlock(this)" id="2"><img src="assets/py.png"
+                                class="icon">nope.py</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="doorkeeper">
+        <p>Add meg a 4 jegyű kódot:</p>
+        <form>
+            <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()">
+        </form>
+    </div>
+
+</body>
+
+</html>
