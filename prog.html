@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programozás</title>
     <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="assets/prism.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <script src="assets/script.js"></script>
 </head>
 
 <body>
     <header>
-        <h1><a href="index.html" class="logo">Infoka</a></h1>
+        <h1><a href="index.html" class="logo">Infoka.hu</a></h1>
     </header>
     <div class="container">
         <h2>Programozás</h2>
@@ -89,6 +90,15 @@
                 </tr>
                 <tr>
                     <td>
+                        Bevezetés a programozás világába
+                    </td>
+                    <td>
+                        <a href="prog/Bevezetés a Programozás Világába.pptx">
+                            <img src="assets/ppt.png" class="icon">Bevezetés a Programozás Világába.pptx</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <img src="assets/scratch-logo.svg" class="icon">
                     </td>
                     <td>
@@ -119,6 +129,23 @@
                 </tr>
             </tbody>
         </table>
+        <h3>Példaprogramok</h3>
+        <p>Sima egyszerű Helló Világ</p>
+        <pre><code class="language-python">print("Hello World")</code></pre>
+        <p>Köszöntő</p>
+        <pre><code class="language-python">vezeték = input('Mi az Ön becses neve?')
+kereszt = input('Érdeklődhetek a keresztneve felől is?')
+print('Üdvözlöm,', vezeték, kereszt, '!')
+print('Üdvözlöm, ', vezeték, ' ', kereszt, '!', sep='')</code></pre>
+        <p>Számkitalálós játék</p>
+        <pre><code class="language-python">import random
+szam = random.randint(1, 100)
+tipp = int(input("Tippelj egy számot 1 és 100 között: "))
+if tipp == szam:
+    print("Gratulálok, eltaláltad!")
+else:
+    print(f"Sajnos nem talált, a szám {szam} volt.")</code></pre>
+        <script src="assets/prism.js"></script>
     </div>
     <div id="doorkeeper">
         <p>Add meg a 4 jegyű kódot:</p>
