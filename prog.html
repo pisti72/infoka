@@ -140,30 +140,179 @@
                 <tr>
                     <td>Egyszerű feladatok</td>
                     <td>
-                        <a onclick="unlock(this)" id="31"><img src="assets/pdf.png" class="icon">nope.pdf</a>
+                        <a href="prog/prog_feladatok.pdf" id="31"><img src="assets/pdf.png"
+                                class="icon">prog_feladatok.pdf</a>
                     </td>
                     <td>
-                        <a onclick="unlock(this)" id="32"><img src="assets/py.png" class="icon">nope.py</a>
+                        <a href="prog/prog_feladatok.pdf" id="32"><img src="assets/py.png" class="icon">nope.py</a>
                     </td>
                 </tr>
             </tbody>
         </table>
         <h3>Példaprogramok</h3>
         <p>Sima egyszerű Helló Világ</p>
-        <pre><code class="language-python">print("Hello World")</code></pre>
-        <p>Köszöntő</p>
-        <pre><code class="language-python">vezeték = input('Mi az Ön becses neve?')
-kereszt = input('Érdeklődhetek a keresztneve felől is?')
-print('Üdvözlöm,', vezeték, kereszt, '!')
-print('Üdvözlöm, ', vezeték, ' ', kereszt, '!', sep='')</code></pre>
+        <pre><code class="language-python"># Helló Világ, mindig ezzel kezdünk :-D
+print("Hello Világ")</code></pre>
+        <p>Üdvözlő</p>
+        <pre><code class="language-python"># Üdvözlés
+nev = input("Kérlek, add meg a neved:")
+print("Üdvözöllek, ", nev, "!")</code></pre>
         <p>Számkitalálós játék</p>
-        <pre><code class="language-python">import random
+        <pre><code class="language-python"># Számkitalálós játék
+import random
 szam = random.randint(1, 100)
 tipp = int(input("Tippelj egy számot 1 és 100 között: "))
 if tipp == szam:
     print("Gratulálok, eltaláltad!")
 else:
     print(f"Sajnos nem talált, a szám {szam} volt.")</code></pre>
+        <p>Kalandjáték <br><img src="https://worldofspectrum.net/pub/sinclair/screens/in-game/g/GnomeRanger_+3.gif" width="500px"></p>
+        <pre><code class="language-python"># Üdvözlés és történet bevezetése
+print("Üdvözöllek a kalandjátékban!")
+print("Egy sötét erdőben találod magad. Két út áll előtted: balra és jobbra.")
+
+# Első választás
+valasztas = input("Melyik utat választod? (balra/jobbra): ").lower()
+
+# Történet folytatása az első választás alapján
+if valasztas == "balra":
+    print("\nBalra mentél, és egy folyóhoz értél.")
+    print("Átúszol a folyón, vagy keresel egy hidat?")
+    valasztas2 = input("Válassz: (uszás/híd): ").lower()
+
+    if valasztas2 == "uszás":
+        print("\nÁtúsztál a folyón, de egy veszélyes állat megtámadott. Vesztettél!")
+    elif valasztas2 == "híd":
+        print("\nMegtaláltad a hidat, és biztonságosan átjutottál. Nyertél!")
+    else:
+        print("\nÉrvénytelen választás. A játék véget ért.")
+
+elif valasztas == "jobbra":
+    print("\nJobbra mentél, és egy sötét barlanghoz értél.")
+    print("Belemész a barlangba, vagy visszafordulsz?")
+    valasztas2 = input("Válassz: (barlang/vissza): ").lower()
+
+    if valasztas2 == "barlang":
+        print("\nA barlangban egy kincset találtál. Nyertél!")
+    elif valasztas2 == "vissza":
+        print("\nVisszafordultál, de az erdőben eltévedtél. Vesztettél!")
+    else:
+        print("\nÉrvénytelen választás. A játék véget ért.")
+
+else:
+    print("\nÉrvénytelen választás. A játék véget ért.")</code></pre>
+        <p>Kalandjáték dictionaryvel: Ez bővíthetőbb, ugyanakkor a kód kicsit bonyolultabb 😨</p>
+        <pre><code class="language-python"># A helyszínek és az útvonalak dictionary-ben tárolva
+        helyszinek = {
+            "erdő": {
+                "leírás": "Egy sötét erdőben találod magad. Két út áll előtted: balra és jobbra.",
+                "lehetőségek": {"balra": "folyó", "jobbra": "barlang"}
+            },
+            "folyó": {
+                "leírás": "Egy folyóhoz értél. Átúszol a folyón, vagy keresel egy hidat?",
+                "lehetőségek": {"uszás": "vesztes", "híd": "nyertes"}
+            },
+            "barlang": {
+                "leírás": "Egy sötét barlanghoz értél. Belemész a barlangba, vagy visszafordulsz?",
+                "lehetőségek": {"barlang": "nyertes", "vissza": "vesztes"}
+            },
+            "nyertes": {
+                "leírás": "Gratulálok, nyertél! A kaland sikeresen véget ért.",
+                "lehetőségek": {}
+            },
+            "vesztes": {
+                "leírás": "Sajnos vesztettél. A kaland véget ért.",
+                "lehetőségek": {}
+            }
+        }
+        
+        # Kezdő helyszín
+        jelenlegi_hely = "erdő"
+        
+        # Játék ciklus
+        while True:
+            # Helyszín leírásának kiírása
+            print(helyszinek[jelenlegi_hely]["leírás"])
+        
+            # Ha nincsenek további lehetőségek, a játék véget ér
+            if not helyszinek[jelenlegi_hely]["lehetőségek"]:
+                break
+        
+            # Lehetőségek kiírása
+            print("Lehetőségeid:")
+            for lehetoseg, cel in helyszinek[jelenlegi_hely]["lehetőségek"].items():
+                print(f"- {lehetoseg}")
+        
+            # Felhasználó választása
+            valasztas = input("Mit választasz? ").lower()
+        
+            # Ellenőrizzük, hogy a választás érvényes-e
+            if valasztas in helyszinek[jelenlegi_hely]["lehetőségek"]:
+                jelenlegi_hely = helyszinek[jelenlegi_hely]["lehetőségek"][valasztas]
+            else:
+                print("Érvénytelen választás. Próbáld újra!")</code></pre>
+        <p>Piros kör 🔴 kétféleképpen</p>
+        <pre><code class="language-python"># Piros kör a teknöc könyvtár felhasználásával
+import turtle
+
+# Turtle beállítása
+t = turtle.Turtle()
+t.shape("turtle")  # Teknőc alak beállítása
+t.color("red")     # A toll színének beállítása pirosra
+
+# Kör rajzolása
+t.begin_fill()     # Kitöltés kezdése
+t.circle(100)      # 100 pixel sugarú kör rajzolása
+t.end_fill()       # Kitöltés befejezése
+
+# Ablak bezárása kattintásra
+turtle.done()
+</code></pre>
+<p>Piros kör 🔴 tkinter könyvtárral</p>
+        <pre><code class="language-python"># Piros kör a tkinter könyvtár felhasználásával
+import tkinter as tk
+
+# Fő ablak létrehozása
+root = tk.Tk()
+root.title("Piros kör")  # Az ablak címe
+
+# Vászon létrehozása
+canvas = tk.Canvas(root, width=200, height=200, bg="white")
+canvas.pack()
+
+# Kör rajzolása
+canvas.create_oval(50, 50, 150, 150, fill="red", outline="red")  # (x1, y1, x2, y2) határoló téglalap
+
+# Fő ciklus indítása
+root.mainloop()
+        </code></pre>
+        <p>Interaktív kör 🔴 🔵 🟢 🟡</p>
+        <pre><code class="language-python"># Interaktív kör a tkinter könyvtár felhasználásával
+import tkinter as tk
+from tkinter import simpledialog
+
+# Fő ablak létrehozása
+root = tk.Tk()
+root.title("Piros kör")
+
+# Vászon létrehozása
+canvas = tk.Canvas(root, width=200, height=200, bg="white")
+canvas.pack()
+
+# Kör méretének és színének bekérése
+sugar = simpledialog.askinteger("Kör sugara", "Add meg a kör sugarát (pixelben):", minvalue=10, maxvalue=100)
+szin = simpledialog.askstring("Kör színe", "Add meg a kör színét (pl. red, blue, green):")
+
+# Kör rajzolása
+x1 = 100 - sugar
+y1 = 100 - sugar
+x2 = 100 + sugar
+y2 = 100 + sugar
+canvas.create_oval(x1, y1, x2, y2, fill=szin, outline=szin)
+
+# Fő ciklus indítása
+root.mainloop()
+        </code></pre>
         <script src="assets/prism.js"></script>
     </div>
     <div id="doorkeeper">
