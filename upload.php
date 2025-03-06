@@ -53,7 +53,7 @@ if ($uploadOk == 0) {
 </head>
 <body>
     <header>
-        <h1><a href="index.html" class="logo">Infoka</a></h1>
+        <h1><a href="index.html" class="logo">Infoka.hu</a></h1>
     </header>
     <div class="container">
         <form action="upload.php" method="POST" enctype="multipart/form-data">
