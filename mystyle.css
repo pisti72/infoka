@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Hemi;
+    src: url(assets/hemi_head/hemi.otf);
+  }
+
 header {
     position: relative;
     top: 0px;
@@ -43,6 +48,7 @@ td,th{
 
 .logo {
     text-decoration: none;
+    font-family: Hemi;
 }
 
 img.icon{
@@ -65,4 +71,13 @@ img.icon{
 }
 #pin{
     font-size: 40px;
+}
+.corner{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+}
+
+a.hidden_urls:visited{
+    color:rgb(255,255,255);
 }
