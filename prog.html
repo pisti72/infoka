@@ -29,11 +29,20 @@
             <tbody>
                 <tr>
                     <td>
-                        Tankönyvben
+                        <img src="assets/nkp_logo.svg" class="icon">Tankönyvben
                     </td>
                     <td>
                         <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_05_001"
                             target="_blank"><img src="assets/www.png" class="icon">nkp Programozás</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="assets/nkp_logo.svg" class="icon">Okosgyűjtemény
+                    </td>
+                    <td>
+                        <a href="https://www.nkp.hu/tankonyv/digitalis-kultura-okosgyujtemeny-9-12/lecke_01_001"
+                            target="_blank"><img src="assets/www.png" class="icon">nkp Táblázatkezelés - Alapok</a>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +56,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Python W3School
+                        <img src="assets/w3schools_logo.svg" class="icon">Python W3School
                     </td>
                     <td>
                         <a href="https://www.w3schools.com/python/" target="_blank"><img src="assets/www.png"
@@ -90,6 +99,15 @@
                 </tr>
                 <tr>
                     <td>
+                        <img src="assets/scratch-logo.svg" class="icon">
+                    </td>
+                    <td>
+                        <a href="https://scratch.mit.edu/">
+                            <img src="assets/www.png" class="icon">scratch.mit.edu</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Microbit prezi
                     </td>
                     <td>
@@ -116,16 +134,6 @@
                         <a href="prog/welcome.py"><img src="assets/py.png" class="icon">welcome.py</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="assets/scratch-logo.svg" class="icon">
-                    </td>
-                    <td>
-                        <a href="https://scratch.mit.edu/">
-                            <img src="assets/www.png" class="icon">scratch.mit.edu</a>
-                    </td>
-                </tr>
-
                 <tr>
                     <td>
                         Programozási nyelvek megoszlása
@@ -266,7 +274,7 @@ else:  # Kevesebb mint 2 óra képernyőidő
     if i % 2 == 0:
         continue  # Páros számok kihagyása
     print(i)</code></pre>
-                </li>
+            </li>
         </ul>
         <pre><code class="language-python"># 1. For ciklus 1-től 10-ig
 print("For ciklus 1-től 10-ig:")
@@ -303,15 +311,18 @@ print("\n")  # Új sor</code></pre>
         <ol>
             <li>Eratoszthenész szitája:</li>
             <ul>
-                <li>A program először létrehoz egy <code class="language-python">is_prime</code> listát, amelyben minden számról azt tárolja,
+                <li>A program először létrehoz egy <code class="language-python">is_prime</code> listát, amelyben minden
+                    számról azt tárolja,
                     hogy prím-e (kezdetben minden szám prímnek van jelölve, kivéve a 0-t és az 1-et).</li>
                 <li>Ezután a program végigmegy a számokon 2-től a 1000 négyzetgyökéig.
-                    Ha egy szám prím (<code class="language-python">[number] == True</code>), akkor a szám összes többszörösét kizárja a
+                    Ha egy szám prím (<code class="language-python">[number] == True</code>), akkor a szám összes
+                    többszörösét kizárja a
                     prímek közül (<code class="language-python">is_prime[multiple] = False</code>).</li>
             </ul>
             <li>Prímszámok kigyűjtése:</li>
             <ul>
-                <li>A végén a program összegyűjti azokat a számokat, amelyekre <code class="language-python">is_prime[number]</code> még mindig
+                <li>A végén a program összegyűjti azokat a számokat, amelyekre <code
+                        class="language-python">is_prime[number]</code> még mindig
                     True.</li>
             </ul>
             <li>Eredmény kiírása:</li>

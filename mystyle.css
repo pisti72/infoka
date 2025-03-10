@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Hemi;
+    src: url(assets/hemi_head/hemi.otf);
+  }
+
 header {
     position: relative;
     top: 0px;
@@ -43,6 +48,7 @@ td,th{
 
 .logo {
     text-decoration: none;
+    font-family: Hemi;
 }
 
 img.icon{
