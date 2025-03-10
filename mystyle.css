@@ -72,3 +72,12 @@ img.icon{
 #pin{
     font-size: 40px;
 }
+.corner{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+}
+
+a.hidden_urls:visited{
+    color:rgb(255,255,255);
+}
