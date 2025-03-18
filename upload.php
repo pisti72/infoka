@@ -1,6 +1,6 @@
 <?php
     $message="";
-    $LIMIT_MB = 600;
+    $LIMIT_MB = 10;
     $target_dir = "uploads/";
     $uploadOk = true;
     
@@ -22,7 +22,7 @@
           $uploadOk = false;
       } 
       // Allow certain file formats
-      $extensions = ["jpg","png","jpeg","gif","docx","xlsx","txt","py","zip","pdf","html"];
+      $extensions = ["jpg","png","jpeg","gif","docx","xlsx","pptx", "txt","py","zip","pdf","html"];
       $has_extension = false;
       foreach($extensions as $item){
         if($imageFileType == $item){
