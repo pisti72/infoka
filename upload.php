@@ -17,7 +17,7 @@
         $uploadOk = false;
       }
       // Check file size
-      if ($_FILES["fileToUpload"]["size"] > $LIMIT_MB*1000) {
+      if ($_FILES["fileToUpload"]["size"] > $LIMIT_MB*1024*1024) {
           $message.="Sorry, your file is too large.<br>";
           $uploadOk = false;
       } 
