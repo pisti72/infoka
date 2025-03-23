@@ -1,6 +1,6 @@
 <?php
     $message="";
-    $LIMIT_MB = 10;
+    $LIMIT_MB = 100;
     $target_dir = "uploads/";
     $uploadOk = true;
     
