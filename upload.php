@@ -22,7 +22,7 @@
           $uploadOk = false;
       } 
       // Allow certain file formats
-      $extensions = ["jpg","png","jpeg","gif","docx","xlsx","pptx", "txt","py","zip","pdf","html"];
+      $extensions = ["jpg","png","jpeg","gif","docx","xlsx","pptx", "txt","py","zip","pdf","html","sb3"];
       $has_extension = false;
       foreach($extensions as $item){
         if($imageFileType == $item){
