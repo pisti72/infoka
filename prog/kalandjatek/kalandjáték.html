@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>Kalandjáték</title>
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+
+body{
+	font-family: "Eagle Lake";
+	background-color:khaki;
+}
+	</style>
+</head>
+<body>
+<h1></h1>
+<img src="">
+<p></p>
+<input>
+<button onclick="lepek()" style="cursor:pointer">Elküld</button>
+<script>
+adatok=[
+	{
+		id:1,
+		cim:"Erdő",
+		kep:"erdo.png",
+		leiras:"Te egy erdő közepén állsz. ",
+		iranyok:[
+			{irany:"észak",hova:2},
+			{irany:"kelet",hova:3}
+		]
+	},
+	{
+		id:2,
+		cim:"Vár",
+		kep:"var.png",
+		leiras:"Itt állsz a vár előtt.",
+		iranyok:[
+			{irany:"nyugat",hova:1},
+			{irany:"dél",hova:3}
+		]
+	},
+	{
+		id:3,
+		cim:"Tisztás",
+		kep:"mezo.png",
+		leiras:"Itt állsz a tisztáson.",
+		iranyok:[
+			{irany:"nyugat",hova:2},
+			{irany:"dél",hova:1}
+		]
+	}
+]
+
+cim = document.getElementsByTagName("h1")[0]
+kep = document.getElementsByTagName("img")[0]
+leiras = document.getElementsByTagName("p")[0]
+bevitel = document.getElementsByTagName("input")[0]
+elkuld = document.getElementsByTagName("button")[0]
+
+holvagyok_id = 1
+kirajzol()
+
+function kirajzol(){
+	palya = getPalya(holvagyok_id)
+	cim.innerHTML = palya.cim
+	kep.src = palya.kep
+	szoveg = palya.leiras + " Merre indulsz?<br>"
+	for(i=0; i<palya.iranyok.length; i++){
+		szoveg += palya.iranyok[i].irany + ", "
+	}
+	leiras.innerHTML = szoveg
+}
+
+function lepek(){
+	irany = bevitel.value
+	bevitel.value = ""
+	palya = getPalya(holvagyok_id)
+	for(i=0; i<palya.iranyok.length; i++){
+		if(palya.iranyok[i].irany == irany){
+			console.log("found: " + palya.iranyok[i].hova)
+			holvagyok_id = palya.iranyok[i].hova
+			kirajzol()
+		}
+	}
+}
+
+function getPalya(id){
+	for(i=0; i<adatok.length; i++){
+		if(id == adatok[i].id){
+			return adatok[i]
+		}
+	}
+}
+</script>
+</body>
+</html>
