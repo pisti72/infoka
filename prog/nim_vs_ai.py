@@ -5,7 +5,7 @@ def nim_jatek_geppel():
     golyok = random.randint(10, 20)  # Véletlenszerű kezdő szám (10-20 között)
     jatekos = 1  # 1 = ember, 2 = gép
     
-    print("Üdvözöllek a Nim játékban!")
+    print("Üdvözöllek a Nim játékban!🎮")
     print(f"Kezdetben {golyok} golyó van. Minden körben 1, 2 vagy 3 golyót vehetsz el.")
     print("Az nyer, aki az utolsó golyót elveszi.\n")
     
