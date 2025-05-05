@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalandjáték</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        #location-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        #location-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #location-desc {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .option-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <img id="location-image" src="clearing.jpg" alt="Helyszín képe">
+    <div id="location-name">Tisztás</div>
+    <div id="location-desc"></div>
+    <div id="options-container"></div>
+
+    <script>
+        const locations = {
+            "clearing": {
+                name: "Tisztás",
+                description: "Egy nyugodt tisztás vagy a közepén. A napfény átvilágítja a friss füvet. Északon egy sötét erdő látszik.",
+                image: "clearing.jpg",
+                options: [
+                    { text: "Erdő felé megyek", target: "forest" },
+                    { text: "Maradok a tisztáson", target: "clearing" }
+                ]
+            },
+            "forest": {
+                name: "Sötét Erdő",
+                description: "Beléptél a sűrű, sötét erdőbe. A fák lombja alig engedi át a napfényt. Nyugat felé visszalatssz a tisztásra.",
+                image: "forest.jpg",
+                options: [
+                    { text: "Visszatérek a tisztásra", target: "clearing" },
+                    { text: "Továbbmegyek az erdőben", target: "forest" }
+                ]
+            }
+        };
+
+        let currentLocation = "clearing";
+
+        function updateLocation() {
+            const loc = locations[currentLocation];
+            document.getElementById("location-image").src = loc.image;
+            document.getElementById("location-name").textContent = loc.name;
+            document.getElementById("location-desc").textContent = loc.description;
+            
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = "";
+            
+            loc.options.forEach(option => {
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                btn.textContent = option.text;
+                btn.onclick = () => {
+                    currentLocation = option.target;
+                    updateLocation();
+                };
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        // Kezdő állapot betöltése
+        updateLocation();
+    </script>
+</body>
+</html>
