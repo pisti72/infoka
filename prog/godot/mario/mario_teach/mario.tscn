@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvyxaws2ctmer"]
+
+[ext_resource type="Texture2D" uid="uid://nvdsvqgayfeh" path="res://assets/mario_assets.png" id="1_w74su"]
+[ext_resource type="Script" uid="uid://c64n0jeiub5f4" path="res://mario.gd" id="1_wrvex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrvex"]
+atlas = ExtResource("1_w74su")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w74su"]
+
+[node name="mario" type="CharacterBody2D"]
+script = ExtResource("1_wrvex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(2.89975, 2.792)
+texture = SubResource("AtlasTexture_wrvex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -1)
+scale = Vector2(2.12603, 2.21314)
+shape = SubResource("RectangleShape2D_w74su")

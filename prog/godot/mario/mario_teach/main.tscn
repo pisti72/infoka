@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://djhacgt6brfj3"]
+
+[ext_resource type="PackedScene" uid="uid://cq1wxenkuh5pp" path="res://ground.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cvyxaws2ctmer" path="res://mario.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c66s7v7ub70o2" path="res://level_1.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(223, 574)
+scale = Vector2(3.18182, 3.125)
+
+[node name="mario" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(224, 431)
+scale = Vector2(1.82353, 2.14286)
+
+[node name="Level1" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(147, 506)
+scale = Vector2(-3.67826, 3.65346)

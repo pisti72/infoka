@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq1wxenkuh5pp"]
+
+[ext_resource type="Texture2D" uid="uid://nvdsvqgayfeh" path="res://assets/mario_assets.png" id="1_yh8r4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7tip"]
+atlas = ExtResource("1_yh8r4")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh8r4"]
+
+[node name="Ground" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -1)
+scale = Vector2(1.65679, 1.6379)
+texture = SubResource("AtlasTexture_t7tip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(1.30957, 1.3558)
+shape = SubResource("RectangleShape2D_yh8r4")
