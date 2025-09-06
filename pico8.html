@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PICO-8 Downloads</title>
     <link rel="icon" type="image/png" href="assets/lexaloffle-pico8.png">
+    <script src="assets/script.js"></script>
     <style>
+        @font-face {
+            font-family: 'Pixel';
+            src: url('assets/fonts/pixel.ttf') format('truetype');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Pixel', Arial, sans-serif;
             background-color: #1e1e1e;
             color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #ff004d;
             padding: 20px;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
             font-size: 2.5em;
         }
+
         main {
             padding: 20px;
         }
+
         .file-list {
             list-style: none;
             padding: 0;
         }
+
         .file-list li {
             background: #333;
             margin: 10px 0;
@@ -38,14 +50,17 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .file-list li a {
             color: #ffcc00;
             text-decoration: none;
             font-weight: bold;
         }
+
         .file-list li a:hover {
             text-decoration: underline;
         }
+
         footer {
             text-align: center;
             padding: 10px;
@@ -55,11 +70,71 @@
             bottom: 0;
             width: 100%;
         }
+
+        #doorkeeper {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #doorkeeper input {
+            font-size: 24px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        #pin-error {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            z-index: 1001;
+            text-align: center;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate(-52%, -50%);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translate(-48%, -50%);
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <h1><img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon" style="width: 40px; vertical-align: middle; margin-right: 10px;">PICO-8 Downloads</h1>
+        <h1><img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon"
+                style="width: 40px; vertical-align: middle; margin-right: 10px;">PICO-8 Downloads</h1>
     </header>
     <main>
         <p>Browse and download PICO-8 files below:</p>
@@ -67,36 +142,40 @@
             <li>
                 <span>Hazak</span>
                 <a href="prog/pico8/hazak.p8" download>
-                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon" style="width: 20px; vertical-align: middle;"> Download
+                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon"
+                        style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
             <li>
                 <span>Mario</span>
                 <a href="prog/pico8/mario.p8" download>
-                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon" style="width: 20px; vertical-align: middle;"> Download
+                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon"
+                        style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
             <li>
                 <span>Pacman</span>
                 <a href="prog/pico8/pacman.p8" download>
-                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon" style="width: 20px; vertical-align: middle;"> Download
+                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon"
+                        style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
             <li>
                 <span>Spaceship</span>
                 <a href="prog/pico8/spaceship.p8" download>
-                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon" style="width: 20px; vertical-align: middle;"> Download
+                    <img src="assets/lexaloffle-pico8.png" alt="PICO-8 Icon"
+                        style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
             <li>
                 <span>PICO-8 for Linux</span>
-                <a href="prog/pico8/pico-8_0.2.7_amd64.zip" download>
+                <a onclick="unlock(this)" id="9">
                     <img src="assets/zip.png" alt="ZIP Icon" style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
             <li>
                 <span>PICO-8 for Windows</span>
-                <a href="prog/pico8/pico-8_0.2.7_windows.zip" download>
+                <a onclick="unlock(this)" id="10">
                     <img src="assets/zip.png" alt="ZIP Icon" style="width: 20px; vertical-align: middle;"> Download
                 </a>
             </li>
@@ -108,8 +187,22 @@
             </li>
         </ul>
     </main>
+    <iframe src="prog/pico8/blueball.html" style="width: 100%; height: 540px; border: none; margin-top: 10px;"></iframe>
+
+    <div id="doorkeeper" role="dialog" aria-label="Kód bevitele">
+        <p>Add meg a 4 jegyű kódot:</p>
+        <form onsubmit="return false;">
+            <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()" aria-label="4 jegyű kód"
+                pattern="[0-9]*" inputmode="numeric">
+        </form>
+    </div>
+    <div id="pin-error" role="alert" aria-live="polite">
+        Hibás kód!
+    </div>
     <footer>
-        &copy; <script>document.write(new Date().getFullYear());</script> PICO-8 Downloads. All rights reserved.
+        &copy;
+        <script>document.write(new Date().getFullYear());</script> PICO-8 Downloads. All rights reserved.
     </footer>
 </body>
+
 </html>

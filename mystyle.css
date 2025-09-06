@@ -1,7 +1,7 @@
 @font-face {
     font-family: Hemi;
     src: url(assets/hemi_head/hemi.otf);
-  }
+}
 
 header {
     position: relative;
@@ -14,8 +14,7 @@ body {
     margin: 0px;
     background-color: #eee;
     color: #444;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /*font-size: 3vh;*/
+    font-family: Arial, sans-serif;
     font-size: 1.5em;
 }
 
@@ -61,6 +60,7 @@ div.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    margin-bottom: 60px;  /* Add space for the fixed footer */
 }
 
 .container ul {
@@ -161,7 +161,22 @@ img.icon{
 #pin{
     font-size: 40px;
 }
-.corner{
+#pin-error {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    z-index: 1001;
+    text-align: center;
+    animation: shake 0.5s ease-in-out;
+}
+corner{
     position: absolute;
     right:10px;
     bottom: 10px;
@@ -180,6 +195,16 @@ a {
 a:hover {
     color: #2980b9;
     text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: #888;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (max-width: 768px) {

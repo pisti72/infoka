@@ -1,130 +1,232 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7NS9ZEREH1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7NS9ZEREH1');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Táblázatkezelés</title>
     <link rel="stylesheet" href="mystyle.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <script src="assets/script.js"></script>
-</head>
+    <style>
+        .icon {
+            width: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        #doorkeeper {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+            color: white;
+        }
+        #doorkeeper input {
+            font-size: 1.2em;
+            text-align: center;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+        .resource-table th,
+        .resource-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .resource-table th {
+            background-color: #f5f5f5;
+        }
+        .resource-link {
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+        }
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        #pin-error {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            z-index: 1001;
+            text-align: center;
+            animation: shake 0.5s ease-in-out;
+        }
 
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-52%, -50%); }
+            20%, 40%, 60%, 80% { transform: translate(-48%, -50%); }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7NS9ZEREH1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7NS9ZEREH1');
+    </script>
+    <script defer src="assets/script.js"></script>
+</head>
 <body>
     <header>
         <h1><a href="index.html" class="logo">Infoka.hu</a></h1>
     </header>
-    <div class="container">
+    
+    <main class="container">
         <h2>Táblázatkezelés</h2>
         <p>Ezen az oldalon táblázatkezeléssel kapcsolatos oktatási anyagokat találsz.</p>
-        <h3>Tananyagok</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Micsoda</th>
-                    <th>Link vagy fájl</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="assets/nkp_logo.svg" class="icon">Tankönyvben
-                    </td>
-                    <td>
-                        <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_08_001"
-                            target="_blank"><img src="assets/www.png" class="icon">nkp Táblázatkezelés</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="assets/nkp_logo.svg" class="icon">Okosgyűjtemény
-                    </td>
-                    <td>
-                        <a href="https://www.nkp.hu/tankonyv/digitalis-kultura-okosgyujtemeny-9-12/lecke_06_001"
-                            target="_blank"><img src="assets/www.png" class="icon">nkp Táblázatkezelés - Alapok</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Táblázatkezelés
-                    </td>
-                    <td>
-                        <a href="excel/Táblázatkezelés.pptx"><img src="assets/ppt.png" class="icon">Táblázatkezelés.pptx</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>Feladatok</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Feladat</th>
-                    <th>Leírás 🔒</th>
-                    <th>Forrás fájl 🔒</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Növényes</td>
-                    <td>
-                        <a onclick="unlock(this)" id="1"><img src="assets/pdf.png" class="icon">novenyes_feladat.pdf</a>
-                    </td>
-                    <td>
-                        <a onclick="unlock(this)" id="2"><img src="assets/txt-file.png"
-                                class="icon">novenyek_forras.txt</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Árváltozás</td>
-                    <td>
-                        <a onclick="unlock(this)" id="3"><img src="assets/pdf.png" class="icon">arak_feladat.pdf</a>
-                    </td>
-                    <td>
-                        <a onclick="unlock(this)" id="4"><img src="assets/xls.png" class="icon">arak_nyers.xlsx</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Baleseti statisztika</td>
-                    <td>
-                        <a onclick="unlock(this)" id="5"><img src="assets/pdf.png"
-                                class="icon">baleseti_statisztika_feladat.pdf</a>
-                    </td>
-                    <td>
-                        <a onclick="unlock(this)" id="6"><img src="assets/xls.png"
-                                class="icon">baleseti_statisztika_forras.xlsx</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Lottóhúzás</td>
-                    <td>
-                        <a onclick="unlock(this)" id="7"><img src="assets/pdf.png" class="icon">lotto5_feladat.pdf</a>
-                    </td>
-                    <td>
-                        <a onclick="unlock(this)" id="8"><img src="assets/xls.png" class="icon">lotto5_forras.xlsx</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="doorkeeper">
+        
+        <section>
+            <h3>Tananyagok</h3>
+            <table class="resource-table" aria-label="Táblázatkezelés tananyagok">
+                <thead>
+                    <tr>
+                        <th scope="col">Micsoda</th>
+                        <th scope="col">Link vagy fájl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="assets/nkp_logo.svg" alt="" class="icon">Tankönyvben</td>
+                        <td>
+                            <a href="https://www.nkp.hu/tankonyv/digitalis_kultura_9_nat2020/lecke_08_001" 
+                               target="_blank" 
+                               rel="noopener" 
+                               class="resource-link">
+                                <img src="assets/www.png" alt="" class="icon">nkp Táblázatkezelés
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/nkp_logo.svg" alt="" class="icon">Okosgyűjtemény</td>
+                        <td>
+                            <a href="https://www.nkp.hu/tankonyv/digitalis-kultura-okosgyujtemeny-9-12/lecke_06_001" 
+                               target="_blank" 
+                               rel="noopener" 
+                               class="resource-link">
+                                <img src="assets/www.png" alt="" class="icon">nkp Táblázatkezelés - Alapok
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Táblázatkezelés</td>
+                        <td>
+                            <a href="excel/Táblázatkezelés.pptx" class="resource-link">
+                                <img src="assets/ppt.png" alt="" class="icon">Táblázatkezelés.pptx
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Feladatok</h3>
+            <table class="resource-table" aria-label="Táblázatkezelés feladatok">
+                <thead>
+                    <tr>
+                        <th scope="col">Feladat</th>
+                        <th scope="col">Leírás 🔒</th>
+                        <th scope="col">Forrás fájl 🔒</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Növényes</td>
+                        <td>
+                            <a onclick="unlock(this)" id="1" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/pdf.png" alt="" class="icon">novenyes_feladat.pdf
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="unlock(this)" id="2" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/txt-file.png" alt="" class="icon">novenyek_forras.txt
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Árváltozás</td>
+                        <td>
+                            <a onclick="unlock(this)" id="3" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/pdf.png" alt="" class="icon">arak_feladat.pdf
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="unlock(this)" id="4" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/xls.png" alt="" class="icon">arak_nyers.xlsx
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Baleseti statisztika</td>
+                        <td>
+                            <a onclick="unlock(this)" id="5" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/pdf.png" alt="" class="icon">baleseti_statisztika_feladat.pdf
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="unlock(this)" id="6" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/xls.png" alt="" class="icon">baleseti_statisztika_forras.xlsx
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lottóhúzás</td>
+                        <td>
+                            <a onclick="unlock(this)" id="7" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/pdf.png" alt="" class="icon">lotto5_feladat.pdf
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="unlock(this)" id="8" class="resource-link" role="button" tabindex="0">
+                                <img src="assets/xls.png" alt="" class="icon">lotto5_forras.xlsx
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="doorkeeper" role="dialog" aria-label="Kód bevitele">
         <p>Add meg a 4 jegyű kódot:</p>
-        <form>
-            <input type="text" id="pin" maxlength="4" size="4" oninput="reveal()">
+        <form onsubmit="return false;">
+            <input type="text" 
+                   id="pin" 
+                   maxlength="4" 
+                   size="4" 
+                   oninput="reveal()" 
+                   aria-label="4 jegyű kód"
+                   pattern="[0-9]*"
+                   inputmode="numeric">
         </form>
-
     </div>
-
+    <div id="pin-error" role="alert" aria-live="polite">
+        Hibás kód!
+    </div>
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> | Készítette: Szalontai István</p>
+    </footer>
 </body>
-
 </html>

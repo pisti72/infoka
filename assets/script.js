@@ -1,36 +1,74 @@
-const map1 = new Map()
-map1.set("1", ["1986", "excel/novenyes/novenyes_feladat.pdf"])
-map1.set("2", ["1986", "excel/novenyes/novenyek_forras.txt"])
-map1.set("3", ["2112", "excel/arak/arak_feladat.pdf"])
-map1.set("4", ["2112", "excel/arak/arak_nyers.xlsx"])
-map1.set("5", ["7895", "excel/ittas/baleseti_statisztika_feladat.pdf"])
-map1.set("6", ["7895", "excel/ittas/baleseti_statisztika_forras.xlsx"])
-map1.set("7", ["5456", "excel/lotto5/lotto5_feladat.pdf"])
-map1.set("8", ["5456", "excel/lotto5/lotto5_forras.xlsx"])
-var current_obj = null
+const map1 = new Map([
+    ["1", ["1986", "excel/novenyes/novenyes_feladat.pdf"]],
+    ["2", ["1986", "excel/novenyes/novenyek_forras.txt"]],
+    ["3", ["2112", "excel/arak/arak_feladat.pdf"]],
+    ["4", ["2112", "excel/arak/arak_nyers.xlsx"]],
+    ["5", ["7895", "excel/ittas/baleseti_statisztika_feladat.pdf"]],
+    ["6", ["7895", "excel/ittas/baleseti_statisztika_forras.xlsx"]],
+    ["7", ["5456", "excel/lotto5/lotto5_feladat.pdf"]],
+    ["8", ["5456", "excel/lotto5/lotto5_forras.xlsx"]],
+    ["9", ["5555", "prog/pico8/pico-8_0.2.7_amd64.zip"]],
+    ["10", ["5555", "prog/pico8/pico-8_0.2.7_windows.zip"]]
+]);
+
+let currentObj = null;
+const PIN_LENGTH = 4;
+let errorTimeout = null;
+
+function showError() {
+    const errorDialog = document.getElementById('pin-error');
+    errorDialog.style.display = 'block';
+    
+    // Clear any existing timeout
+    if (errorTimeout) {
+        clearTimeout(errorTimeout);
+    }
+    
+    // Hide the error after 2 seconds
+    errorTimeout = setTimeout(() => {
+        errorDialog.style.display = 'none';
+    }, 2000);
+}
 
 function unlock(obj) {
-    doorkeeper = document.getElementById("doorkeeper")
-    doorkeeper.style.display = "block"
-    current_obj = obj
-    if (current_obj.href.length > 0) {
-        doorkeeper.style.display = "none"
-    } else {
-        pin = document.getElementById("pin")
-        pin.focus();
+    const doorkeeper = document.getElementById("doorkeeper");
+    const pin = document.getElementById("pin");
+    
+    if (obj.href && obj.href.length > 0) {
+        return;
     }
+    
+    currentObj = obj;
+    doorkeeper.style.display = "block";
+    pin.value = "";
+    pin.focus();
 }
 
 function reveal() {
-    if (pin.value.length == 4) {
-        item = map1.get(current_obj.id)
+    const pin = document.getElementById("pin");
+    const doorkeeper = document.getElementById("doorkeeper");
+    
+    if (!currentObj || !pin.value || pin.value.length !== PIN_LENGTH) {
+        return;
+    }
 
-        if (pin.value == item[0]) {
-            pin.value = ""
-            current_obj.href = item[1]
-        }
-        pin.value = ""
-        doorkeeper = document.getElementById("doorkeeper")
-        doorkeeper.style.display = "none"
+    const item = map1.get(currentObj.id);
+    if (!item) {
+        console.error('Invalid ID:', currentObj.id);
+        return;
+    }
+
+    const [correctPin, resourcePath] = item;
+    
+    if (pin.value === correctPin) {
+        currentObj.href = resourcePath;
+        currentObj.click();
+        pin.value = "";
+        doorkeeper.style.display = "none";
+        currentObj = null;
+    } else {
+        showError();
+        pin.value = "";
+        pin.focus();
     }
 }
