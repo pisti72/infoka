@@ -145,11 +145,12 @@ a.hidden_urls:visited{
 a {
     color: #3498db;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
 a:hover {
     color: #2980b9;
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
