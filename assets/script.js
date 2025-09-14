@@ -17,6 +17,7 @@ let errorTimeout = null;
 
 function showError() {
     const errorDialog = document.getElementById('pin-error');
+    const doorkeeper = document.getElementById("doorkeeper");
     errorDialog.style.display = 'block';
     
     // Clear any existing timeout
@@ -27,6 +28,7 @@ function showError() {
     // Hide the error after 2 seconds
     errorTimeout = setTimeout(() => {
         errorDialog.style.display = 'none';
+        doorkeeper.style.display = "none";
     }, 2000);
 }
 
